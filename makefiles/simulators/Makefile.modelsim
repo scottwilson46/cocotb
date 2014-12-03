@@ -59,6 +59,9 @@ else
 endif
 	echo "vsim $(VSIM_ARGS) $(TOPLEVEL)" >> $@
 ifneq ($(GUI),1)
+ifeq ($(WAVES),1)
+	echo "log -r /*" >> $@
+endif
 	echo "run -all" >> $@
 	echo "quit" >> $@
 endif
